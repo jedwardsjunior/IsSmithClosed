@@ -100,6 +100,8 @@ module.exports = {
     var d2 = d.getDay()
     var day = weekday[d2];
 
+    // Create the search strings for today
+
     global.search1 = "Closed "+day+", "+month+" "+date;
     global.search2 = "Closed "+day+", "+month2+" "+date;
     global.search3 = "Closed "+day+", "+month+" "+date;
@@ -109,10 +111,10 @@ module.exports = {
       global.search4 = "Closed "+day+", "+month2+" "+date1;
     }
 
-    // And tomorrow...
+    // All the months/dates/days of the week for tomorrow
 
     var tomorrow = "";
-    var tomorrow1 = "";
+    var tomorrow1 = "";  // In case it's the last day of the month
     var tomorrow_month = month;
     var tomorrow_month2 = month2;
 
@@ -167,6 +169,8 @@ module.exports = {
       var tomorrow_day = weekday[0];
     }
 
+    // Create the search strings for today
+
     global.search5 = "Closed "+tomorrow_day+", "+tomorrow_month+" "+tomorrow;
     global.search6 = "Closed "+tomorrow_day+", "+tomorrow_month2+" "+tomorrow;
     global.search7 = "Closed "+tomorrow_day+", "+tomorrow_month+" "+tomorrow;
@@ -180,21 +184,19 @@ module.exports = {
     global.message = "Smith is open today."
     global.music = "regular.mp3";
     global.image = "non-snowday-background.jpg";
+
     get_request( function() {
       if (snowday_today=="yes" && snowday_tomorrow=="yes") {
-        console.log("Here1");
         global.answer = "Epic!";
         global.message = "Classes are canceled today and tomorrow!"
         global.music = "snowday.mp3";
         global.image = "background.jpg";
       } else if (snowday_today=="yes") {
-        console.log("Here2");
         global.answer = "Yes!";
         global.message = "Classes are canceled today!"
         global.music = "snowday.mp3";
         global.image = "background.jpg";
       } else if (snowday_tomorrow=="yes") {
-        console.log("Here3");
         global.answer = "Yes!";
         global.message = "Classes are canceled tomorrow!"
         global.music = "snowday.mp3";
