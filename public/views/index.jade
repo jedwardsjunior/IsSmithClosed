@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    canvas#canvas
+    .content
+        h1 #{ snowday }
+        h2 #{ day }
+
+    audio#audio(autoplay='')
+      source(src='music/snowday.mp3', type='audio/mp3')
