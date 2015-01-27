@@ -26,7 +26,7 @@ app.set('view engine', 'jade');
 // route ===============================================
 
 var answer = "Yes!";
-var today = "Classes are cancelled on Tuesday"
+var today = "Classes are canceled on Tuesday"
 
 app.get('/', function(req, res){
   res.render('index',
