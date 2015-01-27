@@ -1,47 +1,44 @@
 var request        = require("request");
 
+global.last_updated = "";
+global.body = "Nada";
+var snowday_today = "no";
+var snowday_tomorrow = "no";
+
 function get_request( cb ) {
-  /**
-  request({
-      uri: "http://www.smith.edu/media/emergency/",
-    }, function(error, response, body) {
-      if (body.indexOf(global.search1) != -1 ||
-        body.indexOf(global.search2) != -1 ||
-        body.indexOf(global.search3) != -1 ||
-        body.indexOf(global.search4) != -1
-      )
-    {
-      console.log("Yippee!");
-      global.snowday_today = "yes";
-    }
-    if (body.indexOf(global.search5) != -1 ||
-      body.indexOf(global.search6) != -1 ||
-      body.indexOf(global.search7) != -1 ||
-      body.indexOf(global.search8) != -1)
-    {
-      global.snowday_tomorrow = "yes";
-    }
-    cb();
-  })*/
+  var d = new Date();
+  var today = (d.getMonth()+1) + "/" + d.getDate();
 
-  var body = "Due to predicted inclement weather, Smith College will be closed on Tuesday, Jan. 27. Please click the above link for updated information for students, faculty and staff."
+  if (global.last_updated != today) {
+    request({
+        uri: "http://www.smith.edu/media/emergency/",
+      }, function(error, response, body) {
+        global.body = body;
+        global.last_updated = today;
+      });
+  }
 
-    if (body.indexOf(global.search1) != -1 ||
-      body.indexOf(global.search2) != -1 ||
-      body.indexOf(global.search3) != -1 ||
-      body.indexOf(global.search4) != -1
-    )
-    {
-      global.snowday_today = "yes";
-    }
-    if (body.indexOf(global.search5) != -1 ||
-      body.indexOf(global.search6) != -1 ||
-      body.indexOf(global.search7) != -1 ||
-      body.indexOf(global.search8) != -1)
-    {
-      global.snowday_tomorrow = "yes";
-    }
-    cb();
+  if (global.body.indexOf(global.search1) != -1 ||
+    global.body.indexOf(global.search2) != -1 ||
+    global.body.indexOf(global.search3) != -1 ||
+    global.body.indexOf(global.search4) != -1
+  )
+  {
+    snowday_today = "yes";
+  } else {
+    snowday_today = "no";
+  }
+
+  if (global.body.indexOf(global.search5) != -1 ||
+    global.body.indexOf(global.search6) != -1 ||
+    global.body.indexOf(global.search7) != -1 ||
+    global.body.indexOf(global.search8) != -1)
+  {
+    snowday_tomorrow = "yes";
+  } else {
+    snowday_tomorrow = "no";
+  }
+  cb();
 };
 
 module.exports = {
@@ -103,13 +100,13 @@ module.exports = {
     var d2 = d.getDay()
     var day = weekday[d2];
 
-    global.search1 = month+" "+date;
-    global.search2 = month2+" "+date;
-    global.search3 = month+" "+date;
-    global.search4 = month2+" "+date;
+    global.search1 = "Closed "+day+", "+month+" "+date;
+    global.search2 = "Closed "+day+", "+month2+" "+date;
+    global.search3 = "Closed "+day+", "+month+" "+date;
+    global.search4 = "Closed "+day+", "+month2+" "+date;
     if(date1 != "") {
-      global.search3 = month+" "+date1;
-      global.search4 = month2+" "+date1;
+      global.search3 = "Closed "+day+", "+month+" "+date1;
+      global.search4 = "Closed "+day+", "+month2+" "+date1;
     }
 
     // And tomorrow...
@@ -170,44 +167,42 @@ module.exports = {
       var tomorrow_day = weekday[0];
     }
 
-    global.search5 = tomorrow_month+" "+tomorrow;
-    global.search6 = tomorrow_month2+" "+tomorrow;
-    global.search7 = tomorrow_month+" "+tomorrow;
-    global.search8 = tomorrow_month2+" "+tomorrow;
+    global.search5 = "Closed "+tomorrow_day+", "+tomorrow_month+" "+tomorrow;
+    global.search6 = "Closed "+tomorrow_day+", "+tomorrow_month2+" "+tomorrow;
+    global.search7 = "Closed "+tomorrow_day+", "+tomorrow_month+" "+tomorrow;
+    global.search8 = "Closed "+tomorrow_day+", "+tomorrow_month2+" "+tomorrow;
     if(tomorrow1 != "") {
-      global.search7 = tomorrow_month+" "+tomorrow1;
-      global.search8 = tomorrow_month2+" "+tomorrow1;
+      global.search7 = "Closed "+tomorrow_day+", "+tomorrow_month+" "+tomorrow1;
+      global.search8 = "Closed "+tomorrow_day+", "+tomorrow_month2+" "+tomorrow1;
     }
 
     global.answer = "No"
     global.message = "Smith is open today."
     global.music = "regular.mp3";
     global.image = "non-snowday-background.jpg";
-    global.snowday_today = "no";
-    global.snowday_tomorrow = "no";
-
     get_request( function() {
-
       if (snowday_today=="yes" && snowday_tomorrow=="yes") {
+        console.log("Here1");
         global.answer = "Epic!";
         global.message = "Classes are canceled today and tomorrow!"
         global.music = "snowday.mp3";
         global.image = "background.jpg";
       } else if (snowday_today=="yes") {
+        console.log("Here2");
         global.answer = "Yes!";
         global.message = "Classes are canceled today!"
         global.music = "snowday.mp3";
         global.image = "background.jpg";
       } else if (snowday_tomorrow=="yes") {
+        console.log("Here3");
         global.answer = "Yes!";
         global.message = "Classes are canceled tomorrow!"
         global.music = "snowday.mp3";
         global.image = "background.jpg";
       }
-
     });
-    
+
     return JSON.stringify({ "answer" : global.answer, "message": global.message,
-                            "music" : global.music, "image" : global.image});
+    "music" : global.music, "image" : global.image});
   }
 }
