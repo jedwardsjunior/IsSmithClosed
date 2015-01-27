@@ -2,10 +2,11 @@
   "name": "is-smith-closed",
   "main": "server.js",
   "dependencies": {
-    "express" : "~4.5.1",
-    "body-parser" : "~1.4.2",
-    "method-override" : "~2.0.2",
-    "jade": "*"
+    "body-parser": "~1.4.2",
+    "express": "~4.5.1",
+    "jade": "*",
+    "method-override": "~2.0.2",
+    "request": "^2.51.0"
   },
   "engine": "node 0.6.x"
 }
