@@ -28,10 +28,11 @@ app.set('view engine', 'jade');
 app.get('/', function(req, res){
   var response = snow_day.snow_day();
   response = JSON.parse(response);
-  console.log(response);
   res.render('index',
-{ "snowday": response.answer,
-              "day"    : response.message
+            { "snowday": response.answer,
+              "message"    : response.message,
+              "image"  : response.image,
+              "music"  : response.music
             });
 });
 

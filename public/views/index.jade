@@ -1,10 +1,15 @@
 extends layout
 
 block content
-    canvas#canvas
+    if(snowday == 'Yes!' || snowday == 'Epic!')
+      canvas#canvas
+
     .content
         h1 #{ snowday }
-        h2 #{ day }
-
+        if(snowday=='No')
+          h2(style="color:#FFFFFF") #{ message }
+        else
+          h2 #{ message }
+          
     audio#audio(autoplay='')
-      source(src='music/snowday.mp3', type='audio/mp3')
+      source(src='music/#{music}', type='audio/mp3')

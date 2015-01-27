@@ -32,7 +32,6 @@ function get_request( cb ) {
       body.indexOf(global.search4) != -1
     )
     {
-      console.log("Yippee!");
       global.snowday_today = "yes";
     }
     if (body.indexOf(global.search5) != -1 ||
@@ -180,42 +179,35 @@ module.exports = {
       global.search8 = tomorrow_month2+" "+tomorrow1;
     }
 
-    console.log(global.search1);
-    console.log(global.search2);
-    console.log(global.search3);
-    console.log(global.search4);
-    console.log(global.search5);
-    console.log(global.search6);
-    console.log(global.search7);
-    console.log(global.search8);
-    console.log(day);
-    console.log(tomorrow_day);
-
     global.answer = "No"
     global.message = "Smith is open today."
+    global.music = "regular.mp3";
+    global.image = "non-snowday-background.jpg";
     global.snowday_today = "no";
     global.snowday_tomorrow = "no";
 
-
     get_request( function() {
 
-      console.log(global.snowday_today);
-      console.log(global.snowday_tomorrow);
       if (snowday_today=="yes" && snowday_tomorrow=="yes") {
         global.answer = "Epic!";
         global.message = "Classes are canceled today and tomorrow!"
+        global.music = "snowday.mp3";
+        global.image = "background.jpg";
       } else if (snowday_today=="yes") {
         global.answer = "Yes!";
         global.message = "Classes are canceled today!"
+        global.music = "snowday.mp3";
+        global.image = "background.jpg";
       } else if (snowday_tomorrow=="yes") {
         global.answer = "Yes!";
         global.message = "Classes are canceled tomorrow!"
+        global.music = "snowday.mp3";
+        global.image = "background.jpg";
       }
 
-      console.log(global.answer);
-      console.log(global.message);
-      });
-
-      return JSON.stringify({ "answer" : global.answer, "message": global.message })
+    });
+    
+    return JSON.stringify({ "answer" : global.answer, "message": global.message,
+                            "music" : global.music, "image" : global.image});
   }
 }
