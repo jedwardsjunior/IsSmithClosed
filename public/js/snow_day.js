@@ -1,6 +1,5 @@
 var request        = require("request");
 
-global.last_updated = "";
 global.body = "Nada";
 var snowday_today = "no";
 var snowday_tomorrow = "no";
@@ -9,14 +8,11 @@ function get_request( cb ) {
   var d = new Date();
   var today = (d.getMonth()+1) + "/" + d.getDate();
 
-  if (global.last_updated != today) {
-    request({
-        uri: "http://www.smith.edu/media/emergency/",
-      }, function(error, response, body) {
-        global.body = body;
-        global.last_updated = today;
-      });
-  }
+  request({
+      uri: "http://www.smith.edu/media/emergency/",
+    }, function(error, response, body) {
+      global.body = body;
+    });
 
   if (global.body.indexOf(global.search1) != -1 ||
     global.body.indexOf(global.search2) != -1 ||
@@ -180,31 +176,33 @@ module.exports = {
       global.search8 = "Closed "+tomorrow_day+", "+tomorrow_month2+" "+tomorrow1;
     }
 
-    global.answer = "No"
-    global.message = "Smith is open today."
-    global.music = "regular.mp3";
-    global.image = "non-snowday-background.jpg";
-
+    var answer = "No"
+    var message = "Smith is open today."
+    var music = "regular.mp3";
+    var image = "non-snowday-background.jpg";
+    
     get_request( function() {
       if (snowday_today=="yes" && snowday_tomorrow=="yes") {
-        global.answer = "Epic!";
-        global.message = "Classes are canceled today and tomorrow!"
-        global.music = "snowday.mp3";
-        global.image = "background.jpg";
+        answer = "Epic!";
+        message = "Classes are canceled today and tomorrow!"
+        gmusic = "snowday.mp3";
+        image = "background.jpg";
       } else if (snowday_today=="yes") {
-        global.answer = "Yes!";
-        global.message = "Classes are canceled today!"
-        global.music = "snowday.mp3";
-        global.image = "background.jpg";
+        answer = "Yes!";
+        message = "Classes are canceled today!"
+        music = "snowday.mp3";
+        image = "background.jpg";
       } else if (snowday_tomorrow=="yes") {
-        global.answer = "Yes!";
-        global.message = "Classes are canceled tomorrow!"
-        global.music = "snowday.mp3";
-        global.image = "background.jpg";
+        answer = "Yes!";
+        message = "Classes are canceled tomorrow!"
+        music = "snowday.mp3";
+        image = "background.jpg";
       }
     });
 
-    return JSON.stringify({ "answer" : global.answer, "message": global.message,
-    "music" : global.music, "image" : global.image});
+    console.log(answer);
+
+    return JSON.stringify({ "answer" : answer, "message": message,
+    "music" : music, "image" : image});
   }
 }
