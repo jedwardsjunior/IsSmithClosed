@@ -200,11 +200,6 @@ module.exports = {
       }
     });
 
-    answer = "Yes!";
-    message = "Classes are canceled today!"
-    music = "snowday.mp3";
-    image = "background.jpg";
-
     return JSON.stringify({ "answer" : answer, "message": message,
     "music" : music, "image" : image});
   }

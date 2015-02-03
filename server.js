@@ -28,6 +28,7 @@ app.set('view engine', 'jade');
 app.get('/', function(req, res){
   var response = snow_day.snow_day();
   response = JSON.parse(response);
+
   res.render('index',
             { "snowday" : response.answer,
               "message" : response.message,
