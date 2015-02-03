@@ -180,7 +180,7 @@ module.exports = {
     var message = "Smith is open today."
     var music = "regular.mp3";
     var image = "non-snowday-background.jpg";
-    
+
     get_request( function() {
       if (snowday_today=="yes" && snowday_tomorrow=="yes") {
         answer = "Epic!";
@@ -199,8 +199,6 @@ module.exports = {
         image = "background.jpg";
       }
     });
-
-    console.log(answer);
 
     return JSON.stringify({ "answer" : answer, "message": message,
     "music" : music, "image" : image});
