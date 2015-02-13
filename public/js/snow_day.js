@@ -180,6 +180,7 @@ module.exports = {
     var message = "Smith is open today."
     var music = "regular.mp3";
     var image = "non-snowday-background.jpg";
+    var url   = "http://studio.code.org/hoc/1";
 
     get_request( function() {
       if (snowday_today=="yes" && snowday_tomorrow=="yes") {
@@ -187,20 +188,23 @@ module.exports = {
         message = "Classes are canceled today and tomorrow!"
         gmusic = "snowday.mp3";
         image = "background.jpg";
+        url   = "http://studio.code.org/s/frozen/stage/1/puzzle/1";
       } else if (snowday_today=="yes") {
         answer = "Yes!";
         message = "Classes are canceled today!"
         music = "snowday.mp3";
         image = "background.jpg";
+        url   = "http://studio.code.org/s/frozen/stage/1/puzzle/1";
       } else if (snowday_tomorrow=="yes") {
         answer = "Yes!";
         message = "Classes are canceled tomorrow!"
         music = "snowday.mp3";
         image = "background.jpg";
+        url   = "http://studio.code.org/s/frozen/stage/1/puzzle/1";
       }
     });
 
     return JSON.stringify({ "answer" : answer, "message": message,
-    "music" : music, "image" : image});
+    "music" : music, "image" : image, "url" : url});
   }
 }

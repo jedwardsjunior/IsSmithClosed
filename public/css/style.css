@@ -18,5 +18,19 @@ h2 {
   text-align: center;
   font-family:Open Sans;
   font-size: 300%;
-  color: #003366;
+
+  /* unvisited link */
+  a:link {
+    color: #003366;
+  }
+
+  /* visited link */
+  a:visited {
+    color: #669999;
+  }
+
+  /* mouse over link */
+  a:hover {
+    color: #336699;
+  }
 }

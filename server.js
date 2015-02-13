@@ -33,7 +33,8 @@ app.get('/', function(req, res){
             { "snowday" : response.answer,
               "message" : response.message,
               "image"   : response.image,
-              "music"   : response.music
+              "music"   : response.music,
+              "url"     : response.url
             });
 });
 

@@ -7,9 +7,11 @@ block content
     .content
         h1 #{ snowday }
         if(snowday=='No')
-          h2(style="color:#FFFFFF") #{ message }
+          h2
+            a(href='#{url}' style="color:#FFFFFF") #{ message }
         else
-          h2 #{ message }
-          
+          h2
+            a(href='#{url}') #{ message }
+
     audio#audio(autoplay='')
       source(src='music/#{music}', type='audio/mp3')
