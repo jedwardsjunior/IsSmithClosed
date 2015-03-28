@@ -5,7 +5,7 @@
 4 error install Couldn't read dependencies
 5 error Failed to parse json
 5 error Unexpected token }
-6 error File: /Users/johnbedwards/Desktop/Git/IsSmithClosed/package.json
+6 error File: /Users/johnbedwards/Desktop/Git/draco-or-kim/package.json
 7 error Failed to parse package.json data.
 7 error package.json must be actual JSON, not just JavaScript.
 7 error
@@ -13,9 +13,9 @@
 7 error Tell the package author to fix their package.json file. JSON.parse
 8 error System Darwin 13.4.0
 9 error command "node" "/usr/local/bin/npm" "install"
-10 error cwd /Users/johnbedwards/Desktop/Git/IsSmithClosed
+10 error cwd /Users/johnbedwards/Desktop/Git/draco-or-kim
 11 error node -v v0.10.32
 12 error npm -v 1.4.28
-13 error file /Users/johnbedwards/Desktop/Git/IsSmithClosed/package.json
+13 error file /Users/johnbedwards/Desktop/Git/draco-or-kim/package.json
 14 error code EJSONPARSE
 15 verbose exit [ 1, true ]

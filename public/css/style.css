@@ -2,35 +2,118 @@
 
 h1 {
   position: fixed;
-  top: 10px;
   width:100%;
   text-align: center;
-  text-align: center;
-  font-family:Open Sans;
-  font-size: 700%;
-  color: #DDAA11;
+  font-family: Georgia;
+  font-size: 400%;
+  color: #C6C3D6;
+  background-color: #033807;
 }
 
-h2 {
+.btngroup {
+  width: 100%;
+  position:absolute;
+  margin-left:-100px;
+  left:25%;
+  bottom:10px;
+}
+
+.btn {
+  background: #033807;
+  background-image: -webkit-linear-gradient(top, #033807, #03820b);
+  background-image: -moz-linear-gradient(top, #033807, #03820b);
+  background-image: -ms-linear-gradient(top, #033807, #03820b);
+  background-image: -o-linear-gradient(top, #033807, #03820b);
+  background-image: linear-gradient(to bottom, #033807, #03820b);
+  -webkit-border-radius: 14;
+  -moz-border-radius: 14;
+  border-radius: 14px;
+  font-family: Georgia;
+  color: #C6C3D6;
+  font-size: 30px;
+  width: 30%;
+  padding: 5px 10px 5px 10px;
+  border: solid #033807 1px;
+  text-decoration: none;
+  margin: 20px;
+}
+
+.btn:hover {
+  background: #03820b;
+  background-image: -webkit-linear-gradient(top, #03820b, #00c90a);
+  background-image: -moz-linear-gradient(top, #03820b, #00c90a);
+  background-image: -ms-linear-gradient(top, #03820b, #00c90a);
+  background-image: -o-linear-gradient(top, #03820b, #00c90a);
+  background-image: linear-gradient(to bottom, #03820b, #00c90a);
+  text-decoration: none;
+}
+
+.modalDialog {
   position: fixed;
-  bottom: 10px;
-  width:100%;
-  text-align: center;
-  font-family:Open Sans;
-  font-size: 300%;
-
-  /* unvisited link */
-  a:link {
-    color: #003366;
-  }
-
-  /* visited link */
-  a:visited {
-    color: #669999;
-  }
-
-  /* mouse over link */
-  a:hover {
-    color: #336699;
-  }
+  font-family: Georgia;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 99999;
+  opacity:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
 }
+
+.modalDialog img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 350px;
+}
+
+.modalDialog button {
+  font-size: 20px;
+  width: 90%;
+}
+
+.modalDialog h2 {
+  text-align: center;
+}
+
+.modalDialog:target {
+  opacity:1;
+  pointer-events: auto;
+}
+
+.modalDialog > div {
+  width: 400px;
+  position: relative;
+  margin: 10% auto;
+  padding: 5px 20px 13px 20px;
+  border-radius: 10px;
+  background: #fff;
+  background: -moz-linear-gradient(#fff, #999);
+  background: -webkit-linear-gradient(#fff, #999);
+  background: -o-linear-gradient(#fff, #999);
+}
+
+.close {
+  background: #606061;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  right: -12px;
+  text-align: center;
+  top: -10px;
+  width: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover { background: #00d9ff; }

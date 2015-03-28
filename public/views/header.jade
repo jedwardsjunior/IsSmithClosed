@@ -1,7 +1,25 @@
 head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width,initial-scale=1,maximum-scale=1')
-    title Is Smith Closed?
+    title Draco or Kim?
     link(rel='stylesheet', href='css/style.css')
-    script(src="js/main.js")
-    include google_analytics.html
+    script.
+      function dracoOrKim(name) {
+        if (name == "draco") {
+          if ("#{answer}" == "Draco") {
+            document.getElementById("correct").hidden = false;
+            document.getElementById("incorrect").hidden = true;
+          } else {
+            document.getElementById("incorrect").hidden = false;
+            document.getElementById("correct").hidden = true;
+          }
+        } else {
+          if ("#{answer}" == "Kim") {
+            document.getElementById("correct").hidden = false;
+            document.getElementById("incorrect").hidden = true;
+          } else {
+            document.getElementById("incorrect").hidden = false;
+            document.getElementById("correct").hidden = true;
+          }
+        }
+      }

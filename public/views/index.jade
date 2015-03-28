@@ -1,17 +1,25 @@
 extends layout
 
 block content
-    if(snowday == 'Yes!' || snowday == 'Epic!')
-      canvas#canvas
+    h1 Draco or Kim?
 
     .content
-        h1 #{ snowday }
-        if(snowday=='No')
-          h2
-            a(href='#{url}' style="color:#FFFFFF") #{ message }
-        else
-          h2
-            a(href='#{url}') #{ message }
+      div(class="btngroup")
+        a(href='#openModal')
+          button(class="btn", onclick="dracoOrKim('draco')").
+            Draco
+        a(href='#openModal')
+          button(class ="btn", onclick="dracoOrKim('kim')").
+            Kim
+      #openModal.modalDialog
+        div
+          #correct
+            h2 Correct!
+            img(src="#{correct}")
+          #incorrect
+            h2 Incorrect!
+            img(src="#{incorrect}")
 
-    audio#audio(autoplay='')
-      source(src='music/#{music}', type='audio/mp3')
+          a(href="/")
+            button(class="btn").
+              Play again!

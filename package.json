@@ -1,13 +1,11 @@
 {
-  "name": "is-smith-closed",
+  "name": "draco-or-kim",
   "main": "server.js",
   "dependencies": {
     "body-parser": "~1.4.2",
     "express": "~4.5.1",
     "jade": "*",
-    "method-override": "~2.0.2",
-    "postmark": "^0.2.6",
-    "request": "^2.51.0"
+    "method-override": "~2.0.2"
   },
   "engine": "node 0.6.x"
 }

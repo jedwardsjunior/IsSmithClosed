@@ -3,8 +3,7 @@ var express        = require('express');
 var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
-var request        = require("request");
-var snow_day       = require("./public/js/snow_day")
+var draco_or_kim   = require("./public/js/draco_or_kim")
 // configuration ===========================================
 var port = process.env.PORT || 8080; // set our port
 
@@ -24,21 +23,32 @@ app.use(express.static(__dirname + '/public')); // set the static files location
 app.set('views', __dirname + '/public/views');
 app.set('view engine', 'jade');
 
-
 app.get('/', function(req, res){
-  var response = snow_day.snow_day();
-  response = JSON.parse(response);
+	var result = draco_or_kim.getDracoOrKim();
+	result = JSON.parse(result);
+	var correct = "/img/"+result.answer+".jpg";
+	var incorrect = "/img/Sad"+result.answer+".jpg";
+	/* The real deal
+		res.render('index',
+		   { "img" : result.img,
+				 "answer" : result.answer,
+   		   "correct" : correct,
+		     "incorrect" : incorrect,
+		   });
+	*/
+	
+	/* Test */
+	res.render('index',
+		{ "image" : "/images/background.jpg",
+			"answer" : "Draco",
+			"correct" : "/images/Draco.jpg",
+			"incorrect" : "/images/SadDraco.jpg"
+		});
 
-  res.render('index',
-            { "snowday" : response.answer,
-              "message" : response.message,
-              "image"   : response.image,
-              "music"   : response.music,
-              "url"     : response.url
-            });
 });
 
 // start app ===============================================
 app.listen(port);
 console.log('Magic happens on port ' + port); 			// shoutout to the user
+
 exports = module.exports = app; 						// expose app
