@@ -68,7 +68,7 @@ h1 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  height: 350px;
+  width: 75%;
 }
 
 .modalDialog button {

@@ -1,24 +1,26 @@
 // draco-or-kim.com
 var draco_or_kim_dict = {};
-draco_or_kim_dict["draco_or_kim_1.jpg"] = "Draco";
-draco_or_kim_dict["draco_or_kim_2.jpg"] = "";
-draco_or_kim_dict["draco_or_kim_3.jpg"] = "";
-draco_or_kim_dict["draco_or_kim_4.jpg"] = "";
-draco_or_kim_dict["draco_or_kim_5.jpg"] = "";
-draco_or_kim_dict["draco_or_kim_6.jpg"] = "";
-draco_or_kim_dict["draco_or_kim_7.jpg"] = "";
-draco_or_kim_dict["draco_or_kim_8.jpg"] = "";
-draco_or_kim_dict["draco_or_kim_9.jpg"] = "";
-draco_or_kim_dict["draco_or_kim_10.jpg"] = "";
+draco_or_kim_dict["draco_or_kim1.jpg"] = "Draco";
+draco_or_kim_dict["draco_or_kim2.jpg"] = "Kim";
+draco_or_kim_dict["draco_or_kim3.jpg"] = "";
+draco_or_kim_dict["draco_or_kim4.jpg"] = "";
+draco_or_kim_dict["draco_or_kim5.jpg"] = "";
+draco_or_kim_dict["draco_or_kim6.jpg"] = "";
+draco_or_kim_dict["draco_or_kim7.jpg"] = "";
+draco_or_kim_dict["draco_or_kim8.jpg"] = "";
+draco_or_kim_dict["draco_or_kim9.jpg"] = "";
+draco_or_kim_dict["draco_or_kim10.jpg"] = "";
 
 module.exports = {
 
   getDracoOrKim: function() {
-    var index = Math.floor((Math.random() * 50) + 1);
-    var image = "../img/draco_or_kim_"+index+".jpg";
+    var index = Math.floor((Math.random() * 2) + 1);
+    console.log(index);
+    var image = "/images/draco_or_kim"+index+".jpg";
+    console.log(image);
     return JSON.stringify({
       "image" : image,
-      "answer" : draco_or_kim_dict[image]
+      "answer" : draco_or_kim_dict["draco_or_kim"+index+".jpg"]
     });
   }
 };

@@ -26,25 +26,25 @@ app.set('view engine', 'jade');
 app.get('/', function(req, res){
 	var result = draco_or_kim.getDracoOrKim();
 	result = JSON.parse(result);
-	var correct = "/img/"+result.answer+".jpg";
-	var incorrect = "/img/Sad"+result.answer+".jpg";
-	/* The real deal
-		res.render('index',
-		   { "img" : result.img,
-				 "answer" : result.answer,
-   		   "correct" : correct,
-		     "incorrect" : incorrect,
-		   });
-	*/
-	
-	/* Test */
+	var correct = "/images/"+result.answer+".jpg";
+	var incorrect = "/images/Sad"+result.answer+".jpg";
+
+	// The real deal
+	res.render('index',
+	   { "image" : result.image,
+			 "answer" : result.answer,
+ 		   "correct" : correct,
+	     "incorrect" : incorrect,
+	   });
+
+	/* Test
 	res.render('index',
 		{ "image" : "/images/background.jpg",
 			"answer" : "Draco",
 			"correct" : "/images/Draco.jpg",
 			"incorrect" : "/images/SadDraco.jpg"
 		});
-
+	*/
 });
 
 // start app ===============================================
